@@ -3,7 +3,7 @@ import { FaUser } from "react-icons/fa";
 
 const Navbar = () => {
   return (
-    <nav className=" w-full text-2xl flex justify-between">
+    <nav className=" w-full text-2xl flex justify-between px-2">
       <div className="font-bold ">TaskBoard</div>
       <div className="w-12 h-12 bg-white flex justify-center items-center rounded-full">
         <FaUser />
