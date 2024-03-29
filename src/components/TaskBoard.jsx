@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Filters from "./Filters";
 import AddNewTask from "./AddNewTask";
 import CurrentTaskStatus from "./CurrentTaskStatus";
+import CreateTaskModal from "./CreateTaskModal";
 
 const TaskBoard = () => {
+  const [showModal, setShowModal] = useState(false);
   const taskStatusArray = [
     { statusHeader: "pending", bgHeader: "bg-slate-400" },
     {
@@ -23,12 +25,16 @@ const TaskBoard = () => {
       bgHeader: "bg-rose-500",
     },
   ];
+
+  const closeModal = () => setShowModal(false);
+
   return (
     <section className="mt-4 mb-4 w-full border-4 border-white h-full flex flex-col  rounded-xl p-4">
       <div className="sm:grid grid-cols-4 gap-4">
         <Filters />
         <div>
-          <AddNewTask />
+          <AddNewTask onClick={() => setShowModal(true)} />
+          {showModal && <CreateTaskModal closeModal={closeModal} />}
         </div>
       </div>
       {/* status component start */}
